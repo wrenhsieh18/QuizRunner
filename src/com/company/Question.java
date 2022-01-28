@@ -1,25 +1,26 @@
 package com.company;
-
-
 import java.util.Scanner;
 
 public abstract class Question {
 
     private String question;
-    private static Scanner inputQuestion = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
 
-
-    public void addQuestion(String question) {
+    protected void addQuestion(String question) {
         this.question = question;
     }
 
-    public static String promptQuestion() {
+    protected static String promptQuestion() {
         System.out.println("What is the question? ");
-        return inputQuestion.nextLine();
+        return input.nextLine();
     }
 
-    public String getQuestion() {
+    protected String getQuestion() {
         return question;
+    }
+
+    protected static Scanner getInput() {
+        return input;
     }
 }
 

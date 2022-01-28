@@ -1,12 +1,11 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class CheckBox extends Options{
 
     private String answer;
-    private static Scanner inputAnswer = new Scanner(System.in);
 
     public CheckBox(String aQuestion, ArrayList<String> aOption, String aAnswer) {
         addQuestion(aQuestion);
@@ -20,13 +19,13 @@ public class CheckBox extends Options{
         return String.format("%s\n%s", getQuestion(), getOption());
     }
 
-    public String getAnswer() {
+    protected String getAnswer() {
         return answer;
     }
 
-    public static String promptAnswer() {
+    protected static String promptAnswer() {
         System.out.print("The answer for this question is (Please enter a number)? ");
-        Integer answerByUser = inputAnswer.nextInt();
+        Integer answerByUser = Question.getInput().nextInt();
         //System.out.println(answerByUser.toString().replace(",", ""));
         return answerByUser.toString().replace(",", "");
     }

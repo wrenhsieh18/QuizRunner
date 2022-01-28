@@ -1,6 +1,5 @@
 package com.company;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,12 +7,12 @@ import java.util.Scanner;
 
 public class Quiz {
     Scanner inputQuiz = new Scanner(System.in);
-    private ArrayList<MultipleChoice> multipleChoiceForQuiz = new ArrayList<>();
-    private ArrayList<CheckBox> checkBoxForQuiz = new ArrayList<>();
-    private ArrayList<TrueFalse> trueFalseforQuiz = new ArrayList<>();
+    private final ArrayList<MultipleChoice> multipleChoiceForQuiz = new ArrayList<>();
+    private final ArrayList<CheckBox> checkBoxForQuiz = new ArrayList<>();
+    private final ArrayList<TrueFalse> trueFalseForQuiz = new ArrayList<>();
 
 
-    private ArrayList<String> userAnswers = new ArrayList<>();
+    private final ArrayList<String> userAnswers = new ArrayList<>();
 
 
     public void createBaseQuestion() {
@@ -34,7 +33,7 @@ public class Quiz {
         TrueFalse baseQuestionTF3 = new TrueFalse("Launchcode is a non-profit organization? ", "1");
         TrueFalse baseQuestionTF4 = new TrueFalse("You have practiced drawing class diagram.", "1");
 
-        Collections.addAll(trueFalseforQuiz,baseQuestionTF1,baseQuestionTF2,baseQuestionTF3,baseQuestionTF4);
+        Collections.addAll(trueFalseForQuiz,baseQuestionTF1,baseQuestionTF2,baseQuestionTF3,baseQuestionTF4);
 
     }
 
@@ -43,28 +42,28 @@ public class Quiz {
 
     //printQuestion
     public void startQuiz() {
-        for (int i = 0; i < trueFalseforQuiz.size(); i++) {
-            System.out.println("(Q" + (i+1) + ") " + trueFalseforQuiz.get(i).toString());
+        for (int i = 0; i < trueFalseForQuiz.size(); i++) {
+            System.out.println("(Q" + (i+1) + ") " + trueFalseForQuiz.get(i).toString());
 
             System.out.print("Answer(enter a number): ");
             userAnswers.add(inputQuiz.nextLine());
-            System.out.println("");
+            System.out.println();
         }
 
         for (int i = 0; i < multipleChoiceForQuiz.size(); i++) {
-            System.out.println("(Q" + (i+1 + trueFalseforQuiz.size()) + ") " + multipleChoiceForQuiz.get(i).toString());
+            System.out.println("(Q" + (i+1 + trueFalseForQuiz.size()) + ") " + multipleChoiceForQuiz.get(i).toString());
 
             System.out.print("Answer(enter a number): ");
             userAnswers.add(inputQuiz.nextLine());
-            System.out.println("");
+            System.out.println();
         }
 
         for (int i = 0; i < checkBoxForQuiz.size(); i++) {
-            System.out.println("(Q" + (i+multipleChoiceForQuiz.size()+trueFalseforQuiz.size()+1) + ") " + checkBoxForQuiz.get(i).toString());
+            System.out.println("(Q" + (i+multipleChoiceForQuiz.size()+trueFalseForQuiz.size()+1) + ") " + checkBoxForQuiz.get(i).toString());
 
             System.out.print("Answer(enter a number): ");
             userAnswers.add(inputQuiz.nextLine());
-            System.out.println("");
+            System.out.println();
         }
 
 
@@ -72,23 +71,23 @@ public class Quiz {
 
     //grade
     public void gradeQuiz() {
-        int numOfQuestion = multipleChoiceForQuiz.size() + checkBoxForQuiz.size() + trueFalseforQuiz.size();
+        int numOfQuestion = multipleChoiceForQuiz.size() + checkBoxForQuiz.size() + trueFalseForQuiz.size();
         double pointPerQuestion = (double) 100/numOfQuestion;
         double pointEarned = 0;
 
-        for (int i = 0; i < trueFalseforQuiz.size(); i++) {
-            if (trueFalseforQuiz.get(i).getAnswer().equals(userAnswers.get(i))) {
+        for (int i = 0; i < trueFalseForQuiz.size(); i++) {
+            if (trueFalseForQuiz.get(i).getAnswer().equals(userAnswers.get(i))) {
                 pointEarned += pointPerQuestion;
             }
         }
 
         for (int i = 0; i < multipleChoiceForQuiz.size(); i++) {
-            if (multipleChoiceForQuiz.get(i).getAnswer().equals(userAnswers.get(i+trueFalseforQuiz.size()))) {
+            if (multipleChoiceForQuiz.get(i).getAnswer().equals(userAnswers.get(i+trueFalseForQuiz.size()))) {
                 pointEarned += pointPerQuestion;
             }
         }
         for (int i = 0; i < checkBoxForQuiz.size(); i++) {
-            if (checkBoxForQuiz.get(i).getAnswer().equals(userAnswers.get(i+multipleChoiceForQuiz.size()+trueFalseforQuiz.size()))) {
+            if (checkBoxForQuiz.get(i).getAnswer().equals(userAnswers.get(i+multipleChoiceForQuiz.size()+trueFalseForQuiz.size()))) {
                 pointEarned += pointPerQuestion;
             }
         }
@@ -132,7 +131,7 @@ public class Quiz {
 
         TrueFalse singleTrueFalseQuestion = new TrueFalse(questionInput, answerInput);
 
-        trueFalseforQuiz.add(singleTrueFalseQuestion);
+        trueFalseForQuiz.add(singleTrueFalseQuestion);
 
     }
 
