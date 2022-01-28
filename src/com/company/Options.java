@@ -27,7 +27,7 @@ public abstract class Options extends Question {
         inputOption.nextLine();
         for (int i = 0; i < numOfChoices; i++) {
             System.out.print(String.format("Option no. %d: ", i+1));
-            optionInput.add( String.format("%d - %s", i, inputOption.nextLine()));
+            optionInput.add( String.format("%d - %s", (i+1), inputOption.nextLine()));
         }
         return optionInput;
     }

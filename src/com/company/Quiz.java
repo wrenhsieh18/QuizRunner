@@ -74,7 +74,6 @@ public class Quiz {
     public void gradeQuiz() {
         int numOfQuestion = multipleChoiceForQuiz.size() + checkBoxForQuiz.size() + trueFalseforQuiz.size();
         double pointPerQuestion = (double) 100/numOfQuestion;
-        System.out.println(pointPerQuestion);
         double pointEarned = 0;
 
         for (int i = 0; i < trueFalseforQuiz.size(); i++) {
@@ -98,7 +97,7 @@ public class Quiz {
             pointEarned = 100;
         }
 
-        System.out.println("You earned " + pointEarned + " for this quiz.");
+        System.out.println("You earned " + pointEarned + " points on this quiz.");
 
     }
 
@@ -114,7 +113,27 @@ public class Quiz {
 
     }
 
-    public ArrayList<MultipleChoice> getMultipleChoiceForQuiz() {
-        return multipleChoiceForQuiz;
+    //addToCheckBox
+    public void addCheckBox() {
+        String questionInput = Question.promptQuestion();
+        ArrayList<String> optionInput = Options.promptOption();
+        String answerInput = CheckBox.promptAnswer();
+
+        CheckBox singleCheckBoxQuestion = new CheckBox(questionInput, optionInput, answerInput);
+
+        checkBoxForQuiz.add(singleCheckBoxQuestion);
+
     }
+
+    //addToCheckBox
+    public void addTrueFalse() {
+        String questionInput = Question.promptQuestion();
+        String answerInput = TrueFalse.promptAnswer();
+
+        TrueFalse singleTrueFalseQuestion = new TrueFalse(questionInput, answerInput);
+
+        trueFalseforQuiz.add(singleTrueFalseQuestion);
+
+    }
+
 }
